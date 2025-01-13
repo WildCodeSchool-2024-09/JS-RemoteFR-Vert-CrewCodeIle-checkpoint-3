@@ -20,9 +20,21 @@ class BoatRepository {
     return rows as Boat[];
   }
 
+  async read(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "SELECT * FROM boat WHERE id = ?",
+      [id],
+    );
+    return rows[0] as Boat;
+  }
+
   async update(boatToUpdate: Partial<Boat>) {
     // your code here
-    return 0;
+    const [result] = await databaseClient.query<Result>(
+      "update boat set coord_x = ?, coord_y = ? where id = ?",
+      [boatToUpdate.coord_x, boatToUpdate.coord_y, boatToUpdate.id],
+    );
+    return result.affectedRows;
   }
 }
 
