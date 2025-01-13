@@ -1,6 +1,5 @@
 import type { RequestHandler } from "express";
 import tileRepository from "./tileRepository";
-import { ne } from "@faker-js/faker/.";
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
