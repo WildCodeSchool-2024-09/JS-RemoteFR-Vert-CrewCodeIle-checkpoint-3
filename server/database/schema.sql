@@ -95,3 +95,6 @@ VALUES
   ("sea", 9, 5), 
   ("sea", 10, 5), 
   ("island", 11, 5);
+
+  ALTER TABLE tile
+  ADD has_treasure BOOL NOT NULL DEFAULT FALSE;
