@@ -22,7 +22,7 @@ const edit: RequestHandler = async (req, res, next) => {
       id: Number(req.params.id),
       name: req.body.name,
       coord_x: req.body.coord_x,
-      coord_y: req.body.coord_y,
+      coord_y: req.body.coord_,
     };
     const affectedRows = await boatRepository.update(boats);
     if (affectedRows === 0) {
