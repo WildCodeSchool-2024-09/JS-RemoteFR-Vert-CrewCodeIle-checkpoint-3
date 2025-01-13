@@ -9,6 +9,7 @@ const router = express.Router();
 import boatActions from "./modules/boat/boatActions";
 
 router.get("/api/boats", boatActions.browse);
+router.get("/api/boats/id", boatActions.edit);
 
 import gameActions from "./modules/game/gameActions";
 
