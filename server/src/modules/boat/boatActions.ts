@@ -26,9 +26,9 @@ const edit: RequestHandler = async (req, res, next) => {
 
     const affectedRows = await boatRepository.update(boat);
     if (affectedRows > 0) {
-      res.send(204);
+      res.sendStatus(204);
     } else {
-      res.send(404);
+      res.sendStatus(404);
     }
   } catch (err) {
     next(err);
