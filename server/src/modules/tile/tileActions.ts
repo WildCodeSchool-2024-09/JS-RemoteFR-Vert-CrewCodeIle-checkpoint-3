@@ -30,7 +30,7 @@ const validate: RequestHandler = async (req, res, next) => {
     if (tile.length > 0) {
       next();
     } else {
-      res.sendStatus(422).json({
+      res.status(422).json({
         validationErrors: [
           {
             field: "coord_x and coord_y",
