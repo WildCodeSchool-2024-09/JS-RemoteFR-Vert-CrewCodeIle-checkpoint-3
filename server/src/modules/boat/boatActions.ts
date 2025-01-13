@@ -15,32 +15,26 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-// const edit: RequestHandler = async (req, res, next) => {
-//   const boatId = Number.parseInt(req.params.id, 10);
-//   const { coord_x, coord_y } = req.body;
-
-//   if (!coord_x || !coord_y) {
-//     return res.status(400).send("Coordonnées manquantes");
-//   }
-
-//   try {
-//     const affectedRows = await boatRepository.update({
-//       id: boatId,
-//       coord_x,
-//       coord_y,
-//     });
-
-//     if (affectedRows === 0) {
-//       return res.sendStatus(404);
-//     }
-
-//     return res.sendStatus(204);
-//   } catch (err) {
-//     next(err);
-//   }
-// };
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const boat = {
+      id: Number(req.params.id),
+      name: req.body.name,
+      coord_x: req.body.coord_x,
+      coord_y: req.body.coord_y,
+    };
+    const affectedRows = await boatRepository.update(boat);
+    if (affectedRows > 0) {
+      res.send(204);
+    } else {
+      res.send(404);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
 
 export default {
   browse,
-  // edit,
+  edit,
 };
